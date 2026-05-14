@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_VENTAS: /api/v1/ventas
+        VITE_API_DESPACHOS: /api/v1/despachos
+    container_name: frontend-despacho
+    restart: always
+    ports:
+      - "3000:8080"
+    environment:
+      BACKEND_VENTAS_URL: http://host.docker.internal:8080
+      BACKEND_DESPACHOS_URL: http://host.docker.internal:8081
